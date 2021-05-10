@@ -23,7 +23,7 @@ func genARPCClientProcedures(packageName string, procedures []models.Procedure)(
 					ServiceHash:   fmt.Sprint(helpers.Hash(packageName)),
 					ProcedureIdx:  idx,
 					ProcedureName: procedure.Name,
-					ArgName:       procedure.Arg.Name,
+					ArgName:       name.CamelCase(procedure.Arg.Name, false),
 					ArgType:       procedure.Arg.TypeName,
 					ResponseType:  *procedure.Result,
 				}

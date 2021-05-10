@@ -19,7 +19,7 @@ func genARPCServerProcedureDeclarations(packageName string, procedures []models.
 			if procedure.Result != nil {
 				templateData := templates.ARPCServerProcedureDeclarationStruct{
 					ProcedureName: procedure.Name,
-					ArgName:       procedure.Arg.Name,
+					ArgName:       name.CamelCase(procedure.Arg.Name, false),
 					ArgType:       procedure.Arg.TypeName,
 					ResponseType:  *procedure.Result,
 				}
@@ -55,7 +55,7 @@ func genARPCServerProcedures(packageName string, procedures []models.Procedure)(
 				templateData := templates.ARPCServerProcedureStruct{
 					ServiceName:   name.CamelCase(packageName, true),
 					ProcedureName: procedure.Name,
-					ArgName:       procedure.Arg.Name,
+					ArgName:       name.CamelCase(procedure.Arg.Name, false),
 					ArgType:       procedure.Arg.TypeName,
 				}
 				tmpl, err := template.New(
