@@ -51,7 +51,7 @@ func ParseDir(dir string)(*token.FileSet, map[string]models.ARPCParsedFile, erro
 	for _, packages := range allPackages{
 		for _, pkg := range packages {
 			fmt.Printf("Parsing package: %s\n", pkg.Name)
-			for fileName, file := range pkg.Files {
+			for fileName, file := range pkg.Files { // TODO: support more than one file
 				fmt.Printf("Parsing file: %s\n", fileName)
 				aRPCParsedFile, err := parsers.ParseARPCFile(file)
 				if err != nil {
